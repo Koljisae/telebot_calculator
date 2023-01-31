@@ -20,7 +20,7 @@ load_dotenv()
 bot = telebot.TeleBot(os.getenv('TOKEN'))
 ```
 ### Docker
-**Useful сommands for гsing and сreating a сontainer:**
+**Useful сommands for using and сreating a сontainer:**
 1. Open terminal in directory with `yml` file.
 2. Write `docker-compose up -d --build` command in **terminal**.
 3. Check container availability `docker-compose ps -a`
