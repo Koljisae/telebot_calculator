@@ -19,6 +19,14 @@ load_dotenv()
 
 bot = telebot.TeleBot(os.getenv('TOKEN'))
 ```
+### Docker
+**Useful сommands for гsing and сreating a сontainer:**
+1. Open terminal in directory with `yml` file.
+2. Write `docker-compose up -d --build` command in **terminal**.
+3. Check container availability `docker-compose ps -a`
+4. `docker-compose start SERVICE_NAME` to start programm.
+5. `docker-compose stop SERVICE_NAME` to stop programm.
+6. `docker-compose logs SERVICE_NAME` to see logs/errors.
 ### Telegram BOT commands
 - `/start` - starts bot.
 - `/calculator` - starts calculator.
