@@ -28,12 +28,11 @@ def calculator_editing_message(
     calc_y: str = "",
     message_id: int = None
 ):
-    nums_list = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     operator_list = ["/", "*", "-", "+"]
     current_char = message.text
     bot.delete_message(message.chat.id, message.id)
     if not message_id:
-        if current_char in nums_list:
+        if current_char.isdigit():
             sent_message = bot.send_message(message.chat.id, current_char)
             bot.register_next_step_handler(
                 message,
@@ -118,7 +117,7 @@ def calculator_editing_message(
             calc_x = eval(calc_x + calc_operator + calc_y)
             calc_y, calc_operator = '', current_char
         elif calc_operator == '':
-            if current_char in nums_list:
+            if current_char.isdigit():
                 calc_x += current_char
             elif current_char in operator_list:
                 calc_operator += current_char
@@ -128,7 +127,7 @@ def calculator_editing_message(
             and calc_operator in operator_list
         ):
             calc_operator = current_char
-        elif calc_x and calc_operator and current_char in nums_list:
+        elif calc_x and calc_operator and current_char.isdigit():
             calc_y += current_char
         bot.edit_message_text(
             text=str(calc_x) + str(calc_operator) + str(calc_y),
@@ -146,4 +145,4 @@ def calculator_editing_message(
 
 
 if __name__ == "__main__":
-    bot.polling()
+    bot.polling(skip_pending=True)
